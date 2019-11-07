@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h1>Registar Estudiantes</h1>
+
+	<form action="{% url 'clientepost' %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="codigo" placeholder="Codigo"><br>
+		<input type="text" name="nombres" placeholder="Nombres"><br>
+		<input type="text" name="apellidos" placeholder="Apellidos"><br>
+		<input type="hidden" name="id_pa" value="1">
+		<input type="submit" name="" value="Guardar">
+	</form>
+
+	<h1>Estudiantes</h1>
+	{% for e in respuesta.datos %}
+	<p>
+		<b>Codigo:</b> {{ e.codigo }}<br>
+		<b>Estudiante:</b> {{ e.nombres }} {{ e.apellidos }}<br>
+		<b>Cod_PA:</b> {{ e.PA }}<br>
+	</p>
+	{% endfor %}
+</body>
+</html>
